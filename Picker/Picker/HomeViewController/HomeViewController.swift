@@ -84,10 +84,7 @@ class HomeViewController: UIViewController {
         print(ampmtext)
         
         if ampmtext.rangeOfString("M") != nil {
-            if dateTimeAgoLabel.text == String(10) {
-                dateTimeAgoLabel.text = ampmtext
-            }
-         //   dateTimeAgoLabel.text = ampmtext
+            dateTimeAgoLabel.text = ampmtext
             print("12-hour clock")
         } else {
             print("24-hour clock")
