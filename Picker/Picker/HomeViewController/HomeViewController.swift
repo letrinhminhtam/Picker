@@ -31,6 +31,7 @@ class HomeViewController: UIViewController {
     //Action button
     @IBAction func displayButtonTappedPicker(sender: AnyObject) {
         dateTimeLabel.text = NSDateFormatter.localizedStringFromDate(myDatePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        timeSelectPicker()
         hiddenDatePickerUiView.hidden = true
     }
     
@@ -71,30 +72,29 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func updateTimeAgoOfPicker() {
-        timeSelectPicker()
-        print("adsdadads")
+        myDatePicker.maximumDate = NSDate()
     }
     
     private func timeSelectPicker() {
-        timeDate.locale = NSLocale.currentLocale()
-        timeDate.dateStyle = NSDateFormatterStyle.NoStyle
-        timeDate.timeStyle = NSDateFormatterStyle.ShortStyle
+        let dateComponentsFormatter = NSDateComponentsFormatter()
+        dateComponentsFormatter.unitsStyle = NSDateComponentsFormatterUnitsStyle.Full
         
-        let ampmtext = timeDate.stringFromDate(NSDate())
-        print(ampmtext)
+        let interval = NSDate().timeIntervalSinceDate(self.myDatePicker.date)
         
-        if ampmtext.rangeOfString("M") != nil {
-            dateTimeAgoLabel.text = ampmtext
-            print("12-hour clock")
-        } else {
-            print("24-hour clock")
-        }
+        let diffirentDate = dateComponentsFormatter.stringFromTimeInterval(interval)
+        dateTimeAgoLabel.text = diffirentDate
+
+//        let calendar = NSCalendar.currentCalendar()
+//        let components = calendar.components([.Day , .Month , .Year], fromDate: myDatePicker.date)
+//        
+//        let year =  components.year
+//        let month = components.month
+//        let day = components.day
+//        dateTimeAgoLabel.text = (String(components.day))
     }
     
     private func timerSystem() {
-        let formatter: NSDateFormatter = NSDateFormatter()
-        formatter.dateFormat = "ss"
-        let dateTimePrefix: String = formatter.stringFromDate(NSDate())
-        dateTimeAgoLabel.text = dateTimePrefix
+       
     }
 }
+
