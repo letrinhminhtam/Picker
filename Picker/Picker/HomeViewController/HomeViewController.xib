@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Picker" customModuleProvider="target">
             <connections>
+                <outlet property="dateTimeAgoLabel" destination="gA7-uH-eqJ" id="jFo-jB-HlG"/>
                 <outlet property="dateTimeLabel" destination="LQV-z9-Jw6" id="azv-yO-rBW"/>
                 <outlet property="hiddenDatePickerUiView" destination="k0j-4U-Ldl" id="9Qd-m4-Dri"/>
                 <outlet property="myDatePicker" destination="yuR-8N-oZo" id="ajh-wO-1vu"/>
@@ -19,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQV-z9-Jw6">
-                    <rect key="frame" x="8" y="163" width="359" height="47"/>
+                    <rect key="frame" x="8" y="162" width="359" height="47"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="47" id="hva-gg-KOv"/>
@@ -31,7 +32,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0j-4U-Ldl">
                     <rect key="frame" x="0.0" y="432" width="375" height="235"/>
                     <subviews>
-                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="yuR-8N-oZo">
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="yuR-8N-oZo">
                             <rect key="frame" x="0.0" y="32" width="375" height="203"/>
                             <date key="date" timeIntervalSinceReferenceDate="490157852.570494">
                                 <!--2016-07-14 02:57:32 +0000-->
@@ -60,15 +61,28 @@
                         <constraint firstItem="yuR-8N-oZo" firstAttribute="top" secondItem="k0j-4U-Ldl" secondAttribute="top" constant="32" id="zUz-NS-q3A"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date time ago" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gA7-uH-eqJ">
+                    <rect key="frame" x="8" y="213" width="359" height="47"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="2vo-rs-IdP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="LQV-z9-Jw6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="8OC-ey-0X6"/>
-                <constraint firstItem="LQV-z9-Jw6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="163" id="AvQ-Nm-drg"/>
+                <constraint firstItem="LQV-z9-Jw6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="162" id="AvQ-Nm-drg"/>
+                <constraint firstItem="gA7-uH-eqJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Lu0-fo-Xk2"/>
                 <constraint firstAttribute="trailing" secondItem="LQV-z9-Jw6" secondAttribute="trailing" constant="8" id="Rli-bt-ST8"/>
                 <constraint firstAttribute="bottom" secondItem="k0j-4U-Ldl" secondAttribute="bottom" id="fJ3-vX-JMS"/>
                 <constraint firstAttribute="trailing" secondItem="k0j-4U-Ldl" secondAttribute="trailing" id="fyr-e2-BKY"/>
                 <constraint firstItem="k0j-4U-Ldl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lLv-XF-dQc"/>
+                <constraint firstItem="gA7-uH-eqJ" firstAttribute="top" secondItem="LQV-z9-Jw6" secondAttribute="bottom" constant="4" id="nrL-mk-9kX"/>
+                <constraint firstAttribute="trailing" secondItem="gA7-uH-eqJ" secondAttribute="trailing" constant="8" id="uba-Xs-jfM"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="316.5" y="338.5"/>

@@ -11,8 +11,12 @@ import UIKit
 class HomeViewController: UIViewController {
     
     @IBOutlet weak private var dateTimeLabel: UILabel!
+    @IBOutlet weak private var dateTimeAgoLabel: UILabel!
     @IBOutlet weak private var myDatePicker: UIDatePicker!
     @IBOutlet weak private var hiddenDatePickerUiView: UIView!
+    
+    var timer: NSTimer!
+    var timeDate = NSDateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,7 @@ class HomeViewController: UIViewController {
         configureHomeViewController()
         tapUILabel()
         hiddenDatePickerUiView.hidden = true
+        setTimeForDatePicker()
     }
     
     private func setUpData() {
@@ -51,12 +56,48 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func openPickerView(sender: UIGestureRecognizer) {
-        UIView.animateWithDuration(0.4, animations: {
+        UIView.animateWithDuration(1.0, animations: {
             if self.hiddenDatePickerUiView.hidden == true {
                 self.hiddenDatePickerUiView.hidden = false
             } else {
                 self.hiddenDatePickerUiView.hidden = true
             }
         }, completion: (nil))
+    }
+    
+    private func setTimeForDatePicker() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(updateTimeAgoOfPicker), userInfo: nil, repeats: true)
+        timer.fire()
+    }
+    
+    @objc private func updateTimeAgoOfPicker() {
+        timeSelectPicker()
+        print("adsdadads")
+    }
+    
+    private func timeSelectPicker() {
+        timeDate.locale = NSLocale.currentLocale()
+        timeDate.dateStyle = NSDateFormatterStyle.NoStyle
+        timeDate.timeStyle = NSDateFormatterStyle.ShortStyle
+        
+        let ampmtext = timeDate.stringFromDate(NSDate())
+        print(ampmtext)
+        
+        if ampmtext.rangeOfString("M") != nil {
+            if dateTimeAgoLabel.text == String(10) {
+                dateTimeAgoLabel.text = ampmtext
+            }
+         //   dateTimeAgoLabel.text = ampmtext
+            print("12-hour clock")
+        } else {
+            print("24-hour clock")
+        }
+    }
+    
+    private func timerSystem() {
+        let formatter: NSDateFormatter = NSDateFormatter()
+        formatter.dateFormat = "ss"
+        let dateTimePrefix: String = formatter.stringFromDate(NSDate())
+        dateTimeAgoLabel.text = dateTimePrefix
     }
 }
