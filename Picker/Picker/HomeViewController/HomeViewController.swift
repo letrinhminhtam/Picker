@@ -78,19 +78,15 @@ class HomeViewController: UIViewController {
     private func timeSelectPicker() {
         let dateComponentsFormatter = NSDateComponentsFormatter()
         dateComponentsFormatter.unitsStyle = NSDateComponentsFormatterUnitsStyle.Full
-        
-        let interval = NSDate().timeIntervalSinceDate(self.myDatePicker.date)
-        
+        let interval = NSDate().timeIntervalSinceDate(myDatePicker.date)
         let diffirentDate = dateComponentsFormatter.stringFromTimeInterval(interval)
-        dateTimeAgoLabel.text = diffirentDate
-
-//        let calendar = NSCalendar.currentCalendar()
-//        let components = calendar.components([.Day , .Month , .Year], fromDate: myDatePicker.date)
-//        
-//        let year =  components.year
-//        let month = components.month
-//        let day = components.day
-//        dateTimeAgoLabel.text = (String(components.day))
+        let dateTime = diffirentDate?.componentsSeparatedByString(", ")
+        if dateTime!.count > 1 {
+            dateTimeAgoLabel.text = "\(dateTime![0]) \(dateTime![1])"
+        } else {
+            dateTimeAgoLabel.text = "\(dateTime![0])"
+        }
+        
     }
     
     private func timerSystem() {
